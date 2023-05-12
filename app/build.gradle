@@ -9,7 +9,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.plcoding.jetpackcomposepokedex"
+        applicationId "com.kzeledon.jetpackcomposepokedex"
         minSdk 21
         targetSdk 33
         versionCode 1
@@ -40,7 +40,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion '1.4.7'
     }
-    namespace 'com.plcoding.jetpackcomposepokedex'
+    namespace 'com.kzeledon.jetpackcomposepokedex'
 }
 
 dependencies {

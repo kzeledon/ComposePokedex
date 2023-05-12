@@ -1,4 +1,4 @@
-package com.plcoding.jetpackcomposepokedex
+package com.kzeledon.jetpackcomposepokedex
 
 import org.junit.Test
 
