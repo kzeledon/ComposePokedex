@@ -4,6 +4,11 @@ import androidx.compose.ui.graphics.Color
 
 val LightBlue = Color(0xFFBAC7FF)
 val lightGrey = Color(0xFFAAAAAA)
+val whiteGrey = Color(0xFFFDFDFD)
+val blackOpacity = Color(0x0D000000)
+
+val darkBackground = Color(0x1F000000)
+val lightBackground = Color(0xFFEEEEEE)
 
 val TypeNormal = Color(0xFFa8a8a8)
 val TypeFire = Color(0xFFf08030)

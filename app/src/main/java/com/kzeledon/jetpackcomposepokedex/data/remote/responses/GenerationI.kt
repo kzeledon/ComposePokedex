@@ -1,6 +1,6 @@
 package com.kzeledon.jetpackcomposepokedex.data.remote.responses
 
 data class GenerationI(
-    val red-blue: RedBlue,
+    val redBlue: RedBlue,
     val yellow: Yellow
 )
