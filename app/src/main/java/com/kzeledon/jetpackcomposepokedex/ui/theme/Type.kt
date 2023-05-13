@@ -20,10 +20,17 @@ val RobotoCondensed = FontFamily(
     Font(R.font.roboto_condensed_regular, FontWeight.Normal),
 )
 
+val CircularStd = FontFamily(
+    Font(R.font.circular_std_book, FontWeight.Normal),
+    Font(R.font.circular_std_bold, FontWeight.Bold),
+    Font(R.font.circular_std_black, FontWeight.Black),
+    Font(R.font.circular_std_medium, FontWeight.Medium)
+)
+
 // Set of Material typography styles to start with
 val Typography = Typography(
     body1 = TextStyle(
-        fontFamily = Roboto,
+        fontFamily = CircularStd,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
     ),

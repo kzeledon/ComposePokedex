@@ -10,6 +10,9 @@ val blackOpacity = Color(0x0D000000)
 val darkBackground = Color(0x1F000000)
 val lightBackground = Color(0xFFEEEEEE)
 
+val lightGreen = Color(0xFF78C850);
+val lightTeal = Color(0xFF48D0B0);
+
 val TypeNormal = Color(0xFFa8a8a8)
 val TypeFire = Color(0xFFf08030)
 val TypeWater = Color(0xFF6890f0)
