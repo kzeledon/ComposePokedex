@@ -6,8 +6,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,6 +18,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -80,6 +85,54 @@ fun pokemonListScreen(
                     .size(300.dp)
                     .offset(x = (118).dp, y = (-90).dp)
             )
+
+            Icon(
+                imageVector = Icons.Default.Dehaze,
+                contentDescription = null,
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .offset(x = (-20).dp, y = 48.dp)
+            )
+
+            Text(
+                text = "Pokedex",
+                fontSize = 40.sp,
+                fontWeight = FontWeight.Bold,
+                color = if (isSystemInDarkTheme()) Color.White else Color.Black,
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .offset(y = 100.dp)
+            )
+
+            PokemonList(navController = navController)
+        }
+    }
+}
+
+@Composable
+fun PokemonList(
+    navController: NavController,
+    viewModel: PokemonListViewModel = hiltViewModel()
+) {
+    val pokemonList by remember { viewModel.pokemonList }
+    val endReached by remember { viewModel.endReached }
+    val loadError by remember { viewModel.loadError }
+    val isLoading by remember { viewModel.isLoading }
+
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .offset(y = 200.dp)
+            .padding(bottom = 55.dp)
+    ) {
+        items(pokemonList) { pokemon ->
+            if(pokemon == pokemonList.last() && !endReached) {
+                viewModel.loadPokemonPaginated()
+            }
+            PokemonCard(entry = pokemon, navController = navController )
         }
     }
 }
@@ -119,6 +172,18 @@ fun background() {
                 .offset(y = 100.dp)
         )
 
+//        LazyVerticalGrid(
+//            columns = GridCells.Fixed(2),
+//            horizontalArrangement = Arrangement.spacedBy(12.dp),
+//            verticalArrangement = Arrangement.spacedBy(12.dp),
+//            modifier = Modifier
+//                .fillMaxSize()
+//                .offset(y = 200.dp)
+//        ) {
+//            items(pokemonList) { pokemon ->
+//                PokemonCard(entry = pokemon, navController = null )
+//            }
+//        }
 
     }
 }
@@ -140,7 +205,7 @@ fun PokemonCard(
         modifier = modifier
             .shadow(5.dp, RoundedCornerShape(15.dp))
             .clip(RoundedCornerShape(15.dp))
-            .background(entry.color)
+            .background(dominantColor)
             .aspectRatio(1.4f)
             .clickable {
                 navController?.navigate(
@@ -160,17 +225,15 @@ fun PokemonCard(
         )
 
         AsyncImage(
-//            model = entry.imageUrl,
             model =  ImageRequest.Builder(LocalContext.current)
                 .data(entry.imageUrl)
                 .crossfade(true)
-                .target {
-                        viewModel.calcDominatColor(it) { color ->
+                .build(),
+            onSuccess = { success ->
+                    viewModel.calcDominatColor(success.result.drawable) { color ->
                             dominantColor = color
                         }
-                }
-
-                .build(),
+            },
             contentDescription = entry.pokemonName,
             placeholder = painterResource(id = R.drawable.bulbasaur),
             modifier = Modifier
@@ -274,6 +337,7 @@ fun searchBar(
         }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun showSearchBar() {

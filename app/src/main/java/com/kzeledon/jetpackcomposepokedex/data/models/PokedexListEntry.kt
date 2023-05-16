@@ -10,6 +10,7 @@ import com.kzeledon.jetpackcomposepokedex.ui.theme.TypeFighting
 import com.kzeledon.jetpackcomposepokedex.ui.theme.TypeFire
 import com.kzeledon.jetpackcomposepokedex.ui.theme.TypeFlying
 import com.kzeledon.jetpackcomposepokedex.ui.theme.TypeGhost
+import com.kzeledon.jetpackcomposepokedex.ui.theme.TypeGrass
 import com.kzeledon.jetpackcomposepokedex.ui.theme.TypeGround
 import com.kzeledon.jetpackcomposepokedex.ui.theme.TypeIce
 import com.kzeledon.jetpackcomposepokedex.ui.theme.TypeNormal
@@ -53,7 +54,7 @@ enum class PokemonTypes {
     val color : Color
         get() {
             return when(this) {
-                GRASS -> lightTeal
+                GRASS -> TypeGrass
                 POISON -> TypePoison
                 FIRE -> TypeFire
                 FLYING -> TypeFlying

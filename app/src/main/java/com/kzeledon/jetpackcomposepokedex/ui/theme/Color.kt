@@ -2,7 +2,7 @@ package com.kzeledon.jetpackcomposepokedex.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val LightBlue = Color(0xFFBAC7FF)
+val defaultBlue = Color(0xFFBAC7FF)
 val lightGrey = Color(0xFFAAAAAA)
 val whiteGrey = Color(0xFFFDFDFD)
 val blackOpacity = Color(0x0D000000)
@@ -10,14 +10,17 @@ val blackOpacity = Color(0x0D000000)
 val darkBackground = Color(0x1F000000)
 val lightBackground = Color(0xFFEEEEEE)
 
-val lightGreen = Color(0xFF78C850);
-val lightTeal = Color(0xFF48D0B0);
+val lightGreen = Color(0xFF78C850)
+val lightTeal = Color(0xFF48D0B0)
+val lightRed = Color(0xFFFB6C6C)
+val lightBlue = Color(0xFF7AC7FF)
+val lightYellow = Color(0xFFFFCE4B)
 
 val TypeNormal = Color(0xFFa8a8a8)
-val TypeFire = Color(0xFFf08030)
-val TypeWater = Color(0xFF6890f0)
-val TypeElectric = Color(0xFFf8b00f)
-val TypeGrass = Color(0xFF78c851)
+val TypeFire = lightRed
+val TypeWater = lightBlue
+val TypeElectric = lightYellow
+val TypeGrass = lightTeal
 val TypeIce = Color(0xFF98d9d8)
 val TypeFighting = Color(0xFFe83001)
 val TypePoison = Color(0xFFa040a0)

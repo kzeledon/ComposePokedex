@@ -1,5 +1,6 @@
 package com.kzeledon.jetpackcomposepokedex.repository
 
+import android.util.Log
 import com.kzeledon.jetpackcomposepokedex.data.remote.PokeAPI
 import com.kzeledon.jetpackcomposepokedex.data.remote.responses.Pokemon
 import com.kzeledon.jetpackcomposepokedex.data.remote.responses.PokemonList
@@ -17,6 +18,7 @@ class PokemonRepository @Inject constructor(
         } catch (e: Exception) {
             return Resource.Error("An error occurred.")
         }
+        Log.d("Call", response.toString())
         return Resource.Success(response)
     }
 
